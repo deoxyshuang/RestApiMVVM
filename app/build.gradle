@@ -10,6 +10,15 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    flavorDimensions "single"
+    productFlavors {
+        free { // 免費版
+            buildConfigField "boolean", "IS_FREE", "true"
+        }
+        paid { // 付費版
+            buildConfigField "boolean", "IS_FREE", "false"
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
