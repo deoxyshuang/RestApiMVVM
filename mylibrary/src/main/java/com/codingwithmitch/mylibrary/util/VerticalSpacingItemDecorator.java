@@ -1,4 +1,4 @@
-package com.codingwithmitch.foodrecipes.util;
+package com.codingwithmitch.mylibrary.util;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;

@@ -26,9 +26,20 @@ android {
 }
 
 dependencies {
-
+    def retrofitVersion = '2.4.0'
+    def supportVersion = "28.0.0"
+    
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // RecyclerViews
+    implementation "com.android.support:recyclerview-v7:$supportVersion"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+
+    // Retrofit gson converter
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 }

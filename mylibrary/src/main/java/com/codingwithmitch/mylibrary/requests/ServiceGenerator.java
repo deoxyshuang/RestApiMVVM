@@ -1,6 +1,6 @@
-package com.codingwithmitch.foodrecipes.requests;
+package com.codingwithmitch.mylibrary.requests;
 
-import com.codingwithmitch.foodrecipes.util.Constants;
+import com.codingwithmitch.mylibrary.util.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

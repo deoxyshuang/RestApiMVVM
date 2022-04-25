@@ -1,4 +1,4 @@
-package com.codingwithmitch.foodrecipes.util;
+package com.codingwithmitch.mylibrary.util;
 
 public class Constants {
 

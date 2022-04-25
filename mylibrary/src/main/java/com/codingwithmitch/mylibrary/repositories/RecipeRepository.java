@@ -1,14 +1,13 @@
-package com.codingwithmitch.foodrecipes.repositories;
+package com.codingwithmitch.mylibrary.repositories;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MediatorLiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
-import com.codingwithmitch.foodrecipes.models.Recipe;
-import com.codingwithmitch.foodrecipes.requests.RecipeApiClient;
+import com.codingwithmitch.mylibrary.models.Recipe;
+import com.codingwithmitch.mylibrary.requests.RecipeApiClient;
 
 import java.util.List;
 

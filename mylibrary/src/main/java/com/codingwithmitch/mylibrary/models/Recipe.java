@@ -1,4 +1,4 @@
-package com.codingwithmitch.foodrecipes.models;
+package com.codingwithmitch.mylibrary.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;

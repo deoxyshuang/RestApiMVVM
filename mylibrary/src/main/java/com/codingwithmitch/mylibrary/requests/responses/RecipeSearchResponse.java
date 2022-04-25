@@ -1,6 +1,6 @@
-package com.codingwithmitch.foodrecipes.requests.responses;
+package com.codingwithmitch.mylibrary.requests.responses;
 
-import com.codingwithmitch.foodrecipes.models.Recipe;
+import com.codingwithmitch.mylibrary.models.Recipe;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

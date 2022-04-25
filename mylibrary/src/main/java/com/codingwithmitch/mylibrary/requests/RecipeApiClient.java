@@ -1,14 +1,14 @@
-package com.codingwithmitch.foodrecipes.requests;
+package com.codingwithmitch.mylibrary.requests;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.util.Log;
 
-import com.codingwithmitch.foodrecipes.AppExecutors;
-import com.codingwithmitch.foodrecipes.models.Recipe;
-import com.codingwithmitch.foodrecipes.requests.responses.RecipeResponse;
-import com.codingwithmitch.foodrecipes.requests.responses.RecipeSearchResponse;
-import com.codingwithmitch.foodrecipes.util.Constants;
+import com.codingwithmitch.mylibrary.AppExecutors;
+import com.codingwithmitch.mylibrary.models.Recipe;
+import com.codingwithmitch.mylibrary.requests.responses.RecipeResponse;
+import com.codingwithmitch.mylibrary.requests.responses.RecipeSearchResponse;
+import com.codingwithmitch.mylibrary.util.Constants;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import static com.codingwithmitch.foodrecipes.util.Constants.NETWORK_TIMEOUT;
+import static com.codingwithmitch.mylibrary.util.Constants.NETWORK_TIMEOUT;
 
 public class RecipeApiClient {
 

@@ -3,8 +3,8 @@ package com.codingwithmitch.foodrecipes.viewmodels;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.codingwithmitch.foodrecipes.models.Recipe;
-import com.codingwithmitch.foodrecipes.repositories.RecipeRepository;
+import com.codingwithmitch.mylibrary.models.Recipe;
+import com.codingwithmitch.mylibrary.repositories.RecipeRepository;
 
 public class RecipeViewModel extends ViewModel {
 

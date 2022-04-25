@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.foodrecipes.R;
-import com.codingwithmitch.foodrecipes.models.Recipe;
-import com.codingwithmitch.foodrecipes.util.Constants;
+import com.codingwithmitch.mylibrary.models.Recipe;
+import com.codingwithmitch.mylibrary.util.Constants;
 
 import java.util.ArrayList;
 import java.util.List;

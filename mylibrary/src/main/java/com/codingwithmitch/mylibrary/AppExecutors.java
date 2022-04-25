@@ -1,4 +1,4 @@
-package com.codingwithmitch.foodrecipes;
+package com.codingwithmitch.mylibrary;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;

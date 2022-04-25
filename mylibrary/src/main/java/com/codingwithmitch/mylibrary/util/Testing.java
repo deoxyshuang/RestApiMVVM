@@ -1,8 +1,8 @@
-package com.codingwithmitch.foodrecipes.util;
+package com.codingwithmitch.mylibrary.util;
 
 import android.util.Log;
 
-import com.codingwithmitch.foodrecipes.models.Recipe;
+import com.codingwithmitch.mylibrary.models.Recipe;
 
 import java.util.List;
 
