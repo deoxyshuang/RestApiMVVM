@@ -3,6 +3,7 @@ package com.codingwithmitch.foodrecipes;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 
 import com.codingwithmitch.foodrecipes.adapters.OnRecipeListener;
 import com.codingwithmitch.foodrecipes.adapters.RecipeRecyclerAdapter;
+import com.codingwithmitch.foodrecipes.databinding.ActivityRecipeListBinding;
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.util.Testing;
 import com.codingwithmitch.mylibrary.util.VerticalSpacingItemDecorator;
@@ -34,11 +36,15 @@ public class RecipeListActivity extends BaseActivity implements OnRecipeListener
     private RecyclerView mRecyclerView;
     private RecipeRecyclerAdapter mAdapter;
     private SearchView mSearchView;
+//    private ActivityRecipeListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_recipe_list);
+//        binding.setLifecycleOwner(this);
+
         mRecyclerView = findViewById(R.id.recipe_list);
         mSearchView = findViewById(R.id.search_view);
 
@@ -80,7 +86,7 @@ public class RecipeListActivity extends BaseActivity implements OnRecipeListener
     }
 
     private void initRecyclerView(){
-        mAdapter = new RecipeRecyclerAdapter(this);
+        mAdapter = new RecipeRecyclerAdapter(this, this);
         VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(30);
         mRecyclerView.addItemDecoration(itemDecorator);
         mRecyclerView.setAdapter(mAdapter);

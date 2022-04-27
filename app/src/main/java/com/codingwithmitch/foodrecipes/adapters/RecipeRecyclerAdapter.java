@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.codingwithmitch.foodrecipes.R;
+import com.codingwithmitch.foodrecipes.RecipeListActivity;
+import com.codingwithmitch.foodrecipes.databinding.LayoutCategoryListItemBinding;
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.util.Constants;
 
@@ -25,16 +27,20 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
 
     private List<Recipe> mRecipes;
     private OnRecipeListener mOnRecipeListener;
+    private final RecipeListActivity mActivity;
 
-    public RecipeRecyclerAdapter(OnRecipeListener mOnRecipeListener) {
+    public RecipeRecyclerAdapter(OnRecipeListener mOnRecipeListener, RecipeListActivity activity) {
         this.mOnRecipeListener = mOnRecipeListener;
+        this.mActivity = activity;
     }
 
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view;
+        LayoutCategoryListItemBinding view2;
+        LayoutInflater layoutInflater = LayoutInflater.from(viewGroup.getContext());
 
-        View view = null;
         switch (i){
 
             case RECIPE_TYPE:{
@@ -53,8 +59,8 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
 
             case CATEGORY_TYPE:{
-                view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_category_list_item, viewGroup, false);
-                return new CategoryViewHolder(view, mOnRecipeListener);
+                view2 = LayoutCategoryListItemBinding.inflate(layoutInflater, viewGroup, false);
+                return new CategoryViewHolder(view2);
             }
 
             default:{
@@ -89,13 +95,12 @@ public class RecipeRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
                     .placeholder(R.drawable.ic_launcher_background);
 
             Uri path = Uri.parse("android.resource://com.codingwithmitch.foodrecipes/drawable/" + mRecipes.get(i).getImage_url());
-            Glide.with(viewHolder.itemView.getContext())
+            Glide.with(((CategoryViewHolder)viewHolder).binding.getRoot().getContext())
                     .setDefaultRequestOptions(requestOptions)
                     .load(path)
-                    .into(((CategoryViewHolder)viewHolder).categoryImage);
+                    .into(((CategoryViewHolder)viewHolder).binding.categoryImage);
 
-            ((CategoryViewHolder)viewHolder).categoryTitle.setText(mRecipes.get(i).getTitle());
-
+            ((CategoryViewHolder)viewHolder).bind(mRecipes.get(i), mActivity);
         }
 
     }
