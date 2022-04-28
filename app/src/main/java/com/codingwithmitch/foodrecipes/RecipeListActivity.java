@@ -18,7 +18,7 @@ import android.view.MenuItem;
 
 import com.codingwithmitch.foodrecipes.adapters.OnRecipeListener;
 import com.codingwithmitch.foodrecipes.adapters.RecipeRecyclerAdapter;
-import com.codingwithmitch.foodrecipes.databinding.ActivityRecipeListBinding;
+//import com.codingwithmitch.foodrecipes.databinding.ActivityRecipeListBinding;
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.util.Testing;
 import com.codingwithmitch.mylibrary.util.VerticalSpacingItemDecorator;

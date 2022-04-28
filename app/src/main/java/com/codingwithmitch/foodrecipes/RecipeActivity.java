@@ -2,11 +2,11 @@ package com.codingwithmitch.foodrecipes;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.codingwithmitch.foodrecipes.databinding.ActivityRecipeBinding;
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.foodrecipes.viewmodels.RecipeViewModel;
 
@@ -26,21 +27,27 @@ public class RecipeActivity extends BaseActivity {
     private TextView mRecipeTitle, mRecipeRank;
     private LinearLayout mRecipeIngredientsContainer;
     private ScrollView mScrollView;
-
     private RecipeViewModel mRecipeViewModel;
+    private ActivityRecipeBinding binding;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe);
-        mRecipeImage = findViewById(R.id.recipe_image);
-        mRecipeTitle = findViewById(R.id.recipe_title);
-        mRecipeRank = findViewById(R.id.recipe_social_score);
-        mRecipeIngredientsContainer = findViewById(R.id.ingredients_container);
-        mScrollView = findViewById(R.id.parent);
+//        setContentView(R.layout.activity_recipe);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
+
+
+//        mRecipeImage = findViewById(R.id.recipe_image);
+//        mRecipeTitle = findViewById(R.id.recipe_title);
+//        mRecipeRank = findViewById(R.id.recipe_social_score);
+//        mRecipeIngredientsContainer = findViewById(R.id.ingredients_container);
+//        mScrollView = findViewById(R.id.parent);
 
         mRecipeViewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
+
+        binding.setData(mRecipeViewModel);
+        binding.setLifecycleOwner(this);
 
         showProgressBar(true);
         subscribeObservers();
@@ -80,8 +87,8 @@ public class RecipeActivity extends BaseActivity {
     }
 
     private void displayErrorScreen(String errorMessage){
-        mRecipeTitle.setText("Error retrieveing recipe...");
-        mRecipeRank.setText("");
+//        mRecipeTitle.setText("Error retrieveing recipe...");
+//        mRecipeRank.setText("");
         TextView textView = new TextView(this);
         if(!errorMessage.equals("")){
             textView.setText(errorMessage);
@@ -93,7 +100,7 @@ public class RecipeActivity extends BaseActivity {
         textView.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         ));
-        mRecipeIngredientsContainer.addView(textView);
+        binding.ingredientsContainer.addView(textView);
 
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background);
@@ -101,26 +108,28 @@ public class RecipeActivity extends BaseActivity {
         Glide.with(this)
                 .setDefaultRequestOptions(requestOptions)
                 .load(R.drawable.ic_launcher_background)
-                .into(mRecipeImage);
+                .into(binding.recipeImage);
 
-        showParent();
+//        showParent();
         showProgressBar(false);
     }
 
     private void setRecipeProperties(Recipe recipe){
         if(recipe != null){
+            binding.setRecipe(recipe);
+
             RequestOptions requestOptions = new RequestOptions()
                     .placeholder(R.drawable.ic_launcher_background);
 
             Glide.with(this)
                     .setDefaultRequestOptions(requestOptions)
                     .load(recipe.getImage_url())
-                    .into(mRecipeImage);
+                    .into(binding.recipeImage);
 
-            mRecipeTitle.setText(recipe.getTitle());
-            mRecipeRank.setText(String.valueOf(Math.round(recipe.getSocial_rank())));
+//            mRecipeTitle.setText(recipe.getTitle());
+//            mRecipeRank.setText(String.valueOf(Math.round(recipe.getSocial_rank())));
 
-            mRecipeIngredientsContainer.removeAllViews();
+            binding.ingredientsContainer.removeAllViews();
             for(String ingredient: recipe.getIngredients()){
                 TextView textView = new TextView(this);
                 textView.setText(ingredient);
@@ -128,17 +137,17 @@ public class RecipeActivity extends BaseActivity {
                 textView.setLayoutParams(new LinearLayout.LayoutParams(
                         ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
                 ));
-                mRecipeIngredientsContainer.addView(textView);
+                binding.ingredientsContainer.addView(textView);
             }
         }
 
-        showParent();
+//        showParent();
         showProgressBar(false);
     }
 
-    private void showParent(){
-        mScrollView.setVisibility(View.VISIBLE);
-    }
+//    private void showParent(){
+//        mScrollView.setVisibility(View.VISIBLE);
+//    }
 }
 
 
