@@ -1,7 +1,7 @@
 package com.codingwithmitch.mylibrary.requests;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import android.util.Log;
 
 import com.codingwithmitch.mylibrary.AppExecutors;
