@@ -34,9 +34,9 @@ public class RecipeActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_recipe);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
-
+//        binding = DataBindingUtil.setContentView(this, R.layout.activity_recipe);
+        binding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.activity_recipe, null, false);
+        setContentView(binding.getRoot());
 
 //        mRecipeImage = findViewById(R.id.recipe_image);
 //        mRecipeTitle = findViewById(R.id.recipe_title);
