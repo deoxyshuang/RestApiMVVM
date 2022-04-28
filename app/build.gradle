@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'dagger.hilt.android.plugin' //for hilt
 
 android {
     compileSdkVersion 28
@@ -27,6 +28,11 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    // for hilt
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -63,7 +69,10 @@ dependencies {
     // Circle ImageView
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
-    // Dagger2
-    implementation 'com.google.dagger:dagger:2.38.1'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.17'
+    // hilt
+    implementation "com.google.dagger:hilt-android:2.38.1"
+    annotationProcessor "com.google.dagger:hilt-compiler:2.38.1"
+    // hilt for viewmodel
+    implementation 'androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03'
+    annotationProcessor 'androidx.hilt:hilt-compiler:1.0.0'
 }

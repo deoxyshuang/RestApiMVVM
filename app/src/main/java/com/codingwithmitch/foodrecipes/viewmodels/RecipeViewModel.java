@@ -6,12 +6,18 @@ import androidx.lifecycle.ViewModel;
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.repositories.RecipeRepository;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class RecipeViewModel extends ViewModel {
 
     private RecipeRepository mRecipeRepository;
     private String mRecipeId;
     private boolean mDidRetrieveRecipe;
 
+    @Inject
     public RecipeViewModel() {
         mRecipeRepository = RecipeRepository.getInstance();
         mDidRetrieveRecipe = false;

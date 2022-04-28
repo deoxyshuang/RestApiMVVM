@@ -5,15 +5,19 @@ import androidx.lifecycle.ViewModel;
 
 import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.repositories.RecipeRepository;
-
 import java.util.List;
 
+import javax.inject.Inject;
+import dagger.hilt.android.lifecycle.HiltViewModel;
+
+@HiltViewModel
 public class RecipeListViewModel extends ViewModel {
 
     private RecipeRepository mRecipeRepository;
     private boolean mIsViewingRecipes;
     private boolean mIsPerformingQuery;
 
+    @Inject
     public RecipeListViewModel() {
         mRecipeRepository = RecipeRepository.getInstance();
         mIsPerformingQuery = false;

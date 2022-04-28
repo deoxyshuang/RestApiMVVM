@@ -1,12 +1,11 @@
 package com.codingwithmitch.foodrecipes;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SearchView;
@@ -23,11 +22,12 @@ import com.codingwithmitch.mylibrary.models.Recipe;
 import com.codingwithmitch.mylibrary.util.Testing;
 import com.codingwithmitch.mylibrary.util.VerticalSpacingItemDecorator;
 import com.codingwithmitch.foodrecipes.viewmodels.RecipeListViewModel;
-
-
 import java.util.List;
 
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class RecipeListActivity extends BaseActivity implements OnRecipeListener {
 
     private static final String TAG = "RecipeListActivity";
@@ -42,14 +42,14 @@ public class RecipeListActivity extends BaseActivity implements OnRecipeListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_list);
+
 //        binding = DataBindingUtil.setContentView(this, R.layout.activity_recipe_list);
 //        binding.setLifecycleOwner(this);
 
         mRecyclerView = findViewById(R.id.recipe_list);
         mSearchView = findViewById(R.id.search_view);
 
-        mRecipeListViewModel = ViewModelProviders.of(this).get(RecipeListViewModel.class);
-
+        mRecipeListViewModel = new ViewModelProvider(this).get(RecipeListViewModel.class);
         initRecyclerView();
         subscribeObservers();
         initSearchView();

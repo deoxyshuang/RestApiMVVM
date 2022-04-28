@@ -1,15 +1,13 @@
 package com.codingwithmitch.foodrecipes;
 
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatImageView;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,10 +21,10 @@ public class RecipeActivity extends BaseActivity {
     private static final String TAG = "RecipeActivity";
 
     // UI components
-    private AppCompatImageView mRecipeImage;
-    private TextView mRecipeTitle, mRecipeRank;
-    private LinearLayout mRecipeIngredientsContainer;
-    private ScrollView mScrollView;
+//    private AppCompatImageView mRecipeImage;
+//    private TextView mRecipeTitle, mRecipeRank;
+//    private LinearLayout mRecipeIngredientsContainer;
+//    private ScrollView mScrollView;
     private RecipeViewModel mRecipeViewModel;
     private ActivityRecipeBinding binding;
 
@@ -44,7 +42,7 @@ public class RecipeActivity extends BaseActivity {
 //        mRecipeIngredientsContainer = findViewById(R.id.ingredients_container);
 //        mScrollView = findViewById(R.id.parent);
 
-        mRecipeViewModel = ViewModelProviders.of(this).get(RecipeViewModel.class);
+        mRecipeViewModel = new ViewModelProvider(this).get(RecipeViewModel.class);
 
         binding.setData(mRecipeViewModel);
         binding.setLifecycleOwner(this);
